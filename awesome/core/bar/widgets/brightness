@@ -1,0 +1,10 @@
+#!/bin/bash
+brt=$(light -G)
+if [ "$brt" = "100.000000" ]; then
+    icon=""
+elif [ "$brt" \> "50%.*" ]; then
+    icon=""
+elif [ "$brt" \< "50%.*" ]; then
+    icon=""
+fi
+echo "$icon ${brt%.*}%"

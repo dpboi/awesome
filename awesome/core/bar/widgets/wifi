@@ -1,0 +1,15 @@
+#!/bin/bash
+
+constate=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f3 | head -1)
+currentwfi=$(nmcli dev | grep wifi | sed 's/ \{2,\}/|/g' | cut -d '|' -f4 | head -1)
+
+if [ "$constate" = "disconnected" ]; then
+    state="睊"
+    echo "$state"
+elif [ "$constate" = "connected" ]; then
+    state="直"
+    echo "$state" "$currentwfi"
+else
+    state="直 ?"
+    echo "$state"
+fi

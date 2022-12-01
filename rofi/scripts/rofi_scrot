@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# ***This script was made by Clay Gomera (Drake)***
+#  - Description: A simple screenshot dmenu script
+#  - Dependencies: scrot, dmenu, notify-send
+
+## CREATING SCREENSHOT FOLDER ##
+mkdir -p "$HOME/data/Pictures/Screenshots"
+cd "$HOME/data/Pictures/Screenshots" || exit 0
+
+## CHOICES ##
+cho1=" Entire screen"
+cho2=" Entire screen with delay"
+cho3=" Focused window"
+cho4=" Select area"
+chos="$cho1\n$cho2\n$cho3\n$cho4"
+
+## DELAY OPTIONS ##
+del1=" 3 sec delay"
+del2=" 5 sec delay"
+del3=" 10 sec delay"
+dels="$del1\n$del2\n$del3"
+
+## DELAY FUNCTION ##
+delays() {
+    del=$(echo -e "$dels" | rofi -dmenu -b -l 3 -i -p "Select: ");
+        case $del in
+            $del1)
+                scrot -d 3 && notify-send "Screenshot saved";;
+            $del2)
+                scrot -d 5 && notify-send "Screenshot saved";;
+            $del3)
+                scrot -d 10 && notify-send  "Screenshot saved"
+        esac
+}
+
+## ENTIRE SCREEN FUNCTION ##
+screen() {
+        scrot && notify-send "Screenshot saved"
+}
+
+## FOCUSED WINDOW FUNCTION
+window() {
+        scrot -u -b && notify-send "Screenshot saved."
+}
+
+## SELECTED AREA FUNCTION ##
+area() {
+        scrot -s && notify-send "Screenshot saved."
+}
+
+## MAIN ACTION ##
+choice=$(echo -e "$chos" | rofi -dmenu -b -l 4 -i -p "Select: ")
+case $choice in
+    $cho1)
+        screen;;
+    $cho2)
+        delays;;
+    $cho3)
+        window;;
+    $cho4)
+        area
+esac
