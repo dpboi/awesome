@@ -14,7 +14,7 @@ option5=" Cancel"
 ## OPTIONS ARRAY ##
 options="$option1\n$option2\n$option3\n$option4\n$option5"
 ## MAIN ACTION COMMAND ##
-action=$(echo -e "$options" | rofi -dmenu -b -l 5 -i -p " ")
+action=$(echo -e "$options" | rofi -dmenu  -l 5 -i -p " ")
 case "$action" in
     $option1*)
         loginctl reboot;;

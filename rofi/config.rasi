@@ -3,17 +3,17 @@ configuration {
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
-  font: "mononoki Nerd Font 11";
+  font: "mononoki Nerd Font Mono 12";
 }
 
 @theme "/dev/null"
 
 * {
-  bg: #1d2021;
+  bg: #282828;
   bg-alt: #cc241d;
 
-  fg: #ebdbb2;
-  fg-alt: #a89984;
+  fg: #fbf1c7;
+  fg-alt: #7c6f64;
 
   background-color: @bg;
   
@@ -24,7 +24,7 @@ configuration {
 }
 
 window {
-  width: 30%;
+  width: 20%;
 }
 
 element {

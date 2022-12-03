@@ -5,7 +5,6 @@ local beautiful = require("beautiful")
 -- }}}
 
 local themes_path = string.format("%s/.config/awesome/theme/", os.getenv("HOME"))
-
 -- {{{ Main
 local theme = {}
 -- }}}
@@ -15,18 +14,28 @@ theme.font = "mononoki Nerd Font 10"
 --- }}}
 
 -- {{{ Colors
-theme.fg_normal = "#ebdbb2"
-theme.fg_focus  = "#dfc4a1"
-theme.fg_urgent = "#fbf1c7"
-theme.bg_normal = "#1d2021"
-theme.bg_focus  = "#1d2021"
+theme.fg_normal = "#d5c4a1"
+theme.fg_focus  = "#d5c4a1"
+theme.fg_urgent = "#a89984"
+theme.bg_normal = "#282828"
+theme.bg_focus  = "#282828"
 theme.bg_urgent = "#a89984"
 -- }}}
 
+-- {{{ Bar
+theme.bar_1 = "#458588"
+theme.bar_2 = "#b16286"
+theme.bar_3 = "#689d6a"
+theme.bar_4 = "#d79921"
+theme.bar_5 = "#98971a"
+theme.bar_6 = "#d65d0e"
+-- }}}
+
+
 -- {{{ Borders
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(3)
-theme.border_normal = "#504945"
+theme.useless_gap   = dpi(6)
+theme.border_width  = dpi(2)
+theme.border_normal = "#282828"
 theme.border_focus  = "#cc241d"
 theme.border_marked = "#cc241d"
 -- }}}
@@ -34,17 +43,17 @@ theme.border_marked = "#cc241d"
 -- {{{ Taglist
 theme.taglist_font        = "mononoki Nerd Font Mono 20"
 theme.taglist_fg_focus    = "#cc241d"
-theme.taglist_fg_occupied = "#458588"
+theme.taglist_fg_occupied = "#d79921"
 theme.taglist_fg_urgent   = "#504945"
-theme.taglist_fg_empty    = "#d79921"
+theme.taglist_fg_empty    = "#bdae93"
 theme.taglist_spacing     = 10
 -- }}}
 
 -- {{{ Notifications
-theme.notification_font  = "mononoki Nerd Font Mono 12"
-theme.notification_bg    = "#282828"
-theme.notification_fg    = "#fbf1c7"
-theme.notification_shape = gears.shape.rounded_rect
+theme.notification_font         = "mononoki Nerd Font 12"
+theme.notification_bg           = "#282828"
+theme.notification_fg           = "#ebdbb2"
+theme.notification_border_color = "#cc241d"
 -- }}}
 
 -- {{{ Hotkeys Popup

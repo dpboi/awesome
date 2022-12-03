@@ -2,9 +2,6 @@ local wibox = require("wibox")
 local awful = require("awful")
 local theme = require("theme.theme")
 
--- Keyboard layout widget
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- Textclock widget
 mytextclock = wibox.widget.textclock()
 
@@ -47,7 +44,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
       awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end),
     }
   }
-
+ 
   --  Wibox
   s.mywibox = awful.wibar {
     position = "top",
@@ -57,11 +54,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
       {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-          layout = wibox.layout.fixed.horizontal,
-          wibox.widget.textbox("  "),
-          mytextclock,
+	  layout = wibox.layout.fixed.horizontal,
+          wibox.widget.background(wibox.widget.textbox("  "), theme.bg_normal),
+          wibox.container.background(mytextclock, theme.bg_normal),
           wibox.widget.textbox(" "),
-        },
+	},
         nil,
         { -- Right widgets
           layout = wibox.layout.fixed.horizontal,
@@ -77,7 +74,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
           wibox.container.background(wibox.widget.textbox(" "), theme.bg_normal),
           wibox.container.background(s.wifi, theme.bg_normal),
           wibox.container.background(wibox.widget.textbox(" "), theme.bg_normal),
-          wibox.container.background(wibox.widget.textbox(" "), theme.bg_normal),
+          wibox.container.background(wibox.widget.textbox(""), theme.bg_normal),
         },
       },
       {

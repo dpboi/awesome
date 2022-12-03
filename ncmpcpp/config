@@ -8,6 +8,7 @@ follow_now_playing_lyrics = "no"
 ignore_leading_the = "yes"
 ignore_diacritics = "yes"
 default_place_to_search_in = "database"
+execute_on_song_change = "~/.config/ncmpcpp/notify_mpd.sh"
 
 [visualizer]
 visualizer_in_stereo = "yes"

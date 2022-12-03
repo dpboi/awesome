@@ -1,9 +1,9 @@
 -- Apps
 local apps = {
-  terminal = "alacritty",
+  terminal = "urxvt",
   editor = "emacsclient -c -a 'emacs'",
-  music = "alacritty -t ncmpcpp --class ncmpcpp,ncmpcpp -e ncmpcpp",
-  file = "alacritty -t lf --class lf,lf -e lf",
+  music = "urxvt -T ncmpcpp --class ncmpcpp,ncmpcpp -e ncmpcpp",
+  file = "urxvt -T lf --class lf,lf -e lf",
   browser = "qutebrowser",
 }
 return apps

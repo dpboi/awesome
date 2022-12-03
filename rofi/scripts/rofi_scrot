@@ -23,7 +23,7 @@ dels="$del1\n$del2\n$del3"
 
 ## DELAY FUNCTION ##
 delays() {
-    del=$(echo -e "$dels" | rofi -dmenu -b -l 3 -i -p "Select: ");
+    del=$(echo -e "$dels" | rofi -dmenu -l 3 -i -p "Select: ");
         case $del in
             $del1)
                 scrot -d 3 && notify-send "Screenshot saved";;
@@ -50,7 +50,7 @@ area() {
 }
 
 ## MAIN ACTION ##
-choice=$(echo -e "$chos" | rofi -dmenu -b -l 4 -i -p "Select: ")
+choice=$(echo -e "$chos" | rofi -dmenu -l 4 -i -p "Select: ")
 case $choice in
     $cho1)
         screen;;

@@ -289,9 +289,6 @@ awful.keyboard.append_global_keybindings({
     { description = "increase brightness", group = "quick" }),
   awful.key({}, "XF86MonBrightnessDown", function() awful.spawn("light -U 5") end,
     { description = "decrease brightness", group = "quick" }),
-  -- Display configuration
-  awful.key({}, "XF86Display", function() awful.spawn("arandr") end,
-    { description = "decrease brightness", group = "quick" }),
   -- apps (Super + a followed by KEY)
   awful.key({ modkey }, "a", function()
     local grabber
@@ -302,9 +299,7 @@ awful.keyboard.append_global_keybindings({
         if key == "1" then awful.util.spawn(apps.editor)
         elseif key == "2" then awful.util.spawn(apps.file)
         elseif key == "3" then awful.util.spawn(apps.browser)
-        elseif key == "4" then awful.util.spawn(apps.book)
         elseif key == "5" then awful.util.spawn(apps.music)
-        elseif key == "9" then awful.util.spawn(apps.game)
         end
         awful.keygrabber.stop(grabber)
       end
@@ -321,13 +316,10 @@ awful.keyboard.append_global_keybindings({
         if event == "release" then return end
         if key == "d" then awful.spawn.with_shell("rofi -show drun -show-icons")
         elseif key == "r" then awful.spawn.with_shell("rofi -show run")
-        elseif key == "e" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_edit")
         elseif key == "q" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_power")
         elseif key == "i" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wifi")
         elseif key == "b" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_blue")
         elseif key == "s" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_scrot")
-        elseif key == "z" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_emoji")
-        elseif key == "w" then awful.spawn.with_shell("$HOME/.config/rofi/scripts/rofi_wall")
         end
         awful.keygrabber.stop(grabber)
       end

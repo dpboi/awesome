@@ -3,7 +3,7 @@
 (defvar efs/default-variable-font-size 120)
 
 ;; Make frame transparency overridable
-(defvar efs/frame-transparency '(90 . 90))
+(defvar efs/frame-transparency '(85 . 85))
 
 ;; The default is 800 kilobytes.  Measured in bytes.
 (setq gc-cons-threshold (* 50 1000 1000))
@@ -46,9 +46,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
-;; Make gc pauses faster by decreasing the threshold.
-;; Using garbage magic hack.
- (use-package gcmh
+(use-package gcmh
    :config
    (gcmh-mode 1))
 ;; Setting garbage collection threshold
@@ -111,9 +109,6 @@
   :slant 'italic)
 (set-face-attribute 'font-lock-keyword-face nil
   :slant 'italic)
-
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
 
 ;; Needed if using emacsclient. Otherwise, your fonts will be smaller than expected.
 (add-to-list 'default-frame-alist '(font . "Fira Mono-12"))
@@ -180,12 +175,9 @@
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Abandon hope all ye who enter here")
   (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  ;;(setq dashboard-startup-banner "~/.emacs.d/emacs-dash.png")  ;; use custom image as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
-                          (bookmarks . 3)
-                          (projects . 3)
-                          (registers . 3)))
+                          (bookmarks . 3)))
   :config
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text")
@@ -343,8 +335,6 @@
 (setq gdb-many-windows t)
 (setq gdb-show-main t)
 
-
-
 (use-package company
   :after lsp-mode
   :hook (lsp-mode . company-mode)
@@ -476,6 +466,8 @@
   (set-frame-parameter (selected-frame) 'alpha efs/frame-transparency)
   (add-to-list 'default-frame-alist `(alpha . ,efs/frame-transparency))
 
+  (global-display-line-numbers-mode t)
+
     ;; Disable line numbers for some modes
   (dolist (mode '(org-mode-hook
                   term-mode-hook
@@ -551,19 +543,6 @@
   :config
   (persp-mode))
 
-(nvmap :prefix "SPC"
-       "r c"   '(copy-to-register :which-key "Copy to register")
-       "r f"   '(frameset-to-register :which-key "Frameset to register")
-       "r i"   '(insert-register :which-key "Insert register")
-       "r j"   '(jump-to-register :which-key "Jump to register")
-       "r l"   '(list-registers :which-key "List registers")
-       "r n"   '(number-to-register :which-key "Number to register")
-       "r r"   '(counsel-register :which-key "Choose a register")
-       "r v"   '(view-register :which-key "View a register")
-       "r w"   '(window-configuration-to-register :which-key "Window configuration to register")
-       "r +"   '(increment-register :which-key "Increment register")
-       "r SPC" '(point-to-register :which-key "Point to register"))
-
 (setq scroll-conservatively 101) ;; value greater than 100 gets rid of half page jumping
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 3))) ;; how many lines at a time
 (setq mouse-wheel-progressive-speed t) ;; accelerate scrolling
@@ -586,10 +565,6 @@
       eshell-scroll-to-bottom-on-input t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "zsh"))
-
-(use-package vterm)
-(setq shell-file-name "/bin/zsh"
-      vterm-max-scrollback 5000)
 
 (winner-mode 1)
 (nvmap :prefix "SPC"
@@ -628,5 +603,18 @@
 
 ;; Make gc pauses faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))
-
-(use-package writeroom-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
+ '(package-selected-packages
+   '(gruber-darker-theme yasnippet writeroom-mode which-key vterm use-package treemacs-evil treemacs-all-the-icons toc-org sudo-edit smex realgud rainbow-mode rainbow-delimiters python-mode projectile poetry perspective peep-dired pacmacs org-bullets no-littering neotree magit luarocks lsp-ui lsp-pyright lsp-ivy ivy-rich ivy-prescient ivy-posframe helpful general gcmh flymake-lua flycheck evil-tutor evil-nerd-commenter evil-collection esxml eshell-syntax-highlighting emms elfeed-goodies doom-themes doom-modeline dired-single dired-open dired-hide-dotfiles dashboard dap-mode cpputils-cmake counsel company-lua company-box ccls all-the-icons-dired 2048-game)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

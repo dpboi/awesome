@@ -1,18 +1,14 @@
 local awful = require("awful")
 local ruled = require("ruled")
 local naughty = require("naughty")
+local beautiful = require("beautiful")
 
-ruled.notification.connect_signal('request::rules', function()
---  Notifications timeout
-    ruled.notification.append_rule {
-        rule       = { },
-        properties = {
-            screen           = awful.screen.preferred,
-            implicit_timeout = 5,
-        }
-    }
-end)
-naughty.connect_signal("request::display", function(n)
-    naughty.layout.box { notification = n }
-end)
-naughty.config.defaults['icon_size'] = 80
+naughty.config.defaults.ontop = true
+naughty.config.padding = 10
+naughty.config.spacing= 10
+naughty.config.defaults.margin = 10
+naughty.config.defaults.timeout = 3
+naughty.config.defaults.border_width = 5
+beautiful.notification_font = "mononoki Nerd Font"
+beautiful.notification_icon_size = 128
+beautiful.notification_opacity = 0.85

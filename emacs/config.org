@@ -2,9 +2,6 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 * Welcome!
-This is the configuration we've been building in the *Emacs From Scratch* series, now written as an Org Mode document.  This file generates [[file:init.el][init.el]] which can be loaded by Emacs at startup.
-
-The following variables are used to tweak some of the configuration pieces for use in the live streams so you might need to adjust them for your local machine if you try to use this configuration directly.
 
 #+begin_src emacs-lisp
 
@@ -13,7 +10,7 @@ The following variables are used to tweak some of the configuration pieces for u
     (defvar efs/default-variable-font-size 120)
 
     ;; Make frame transparency overridable
-    (defvar efs/frame-transparency '(90 . 90))
+    (defvar efs/frame-transparency '(85 . 85))
 
 #+end_src
 
@@ -81,11 +78,9 @@ We use the [[https://github.com/emacscollective/no-littering/blob/master/no-litt
 
 * Runtime Performance
 ** Garbage collection
+
 Makes startup faster by reducing the frequency of garbage collection
 #+begin_src emacs-lisp
-
-;; Make gc pauses faster by decreasing the threshold.
-;; Using garbage magic hack.
  (use-package gcmh
    :config
    (gcmh-mode 1))
@@ -146,7 +141,6 @@ This configuration uses [[https://evil.readthedocs.io/en/latest/index.html][evil
 
 * UI Configuration
 ** Font Configuration
-Defining our fonts.  Right now I'm using Source Code Pro (SauceCodePro) from the nerd-fonts repository.  Installed from the AUR, it does =NOT= include all variations of the font (such as italics).  You can download the italics Source Code Pro font from the nerd-fonts GitHub though.
 *** Setting The Font Face
 #+begin_src emacs-lisp
 (defun efs/set-font-faces ()
@@ -165,9 +159,6 @@ Defining our fonts.  Right now I'm using Source Code Pro (SauceCodePro) from the
   :slant 'italic)
 (set-face-attribute 'font-lock-keyword-face nil
   :slant 'italic)
-
-;; Uncomment the following line if line spacing needs adjusting.
-(setq-default line-spacing 0.12)
 
 ;; Needed if using emacsclient. Otherwise, your fonts will be smaller than expected.
 (add-to-list 'default-frame-alist '(font . "Fira Mono-12"))
@@ -247,7 +238,7 @@ By default in Emacs, we don't have ability to select text, and then start typing
 (delete-selection-mode t)
 #+end_src
 
-* Buffers and bookmarks
+* Buffers
 
 #+begin_src emacs-lisp
 (nvmap :prefix "SPC"
@@ -271,12 +262,9 @@ Emacs Dashboard is an extensible startup screen showing you recent files, bookma
   (setq dashboard-set-file-icons t)
   (setq dashboard-banner-logo-title "Abandon hope all ye who enter here")
   (setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
-  ;;(setq dashboard-startup-banner "~/.emacs.d/emacs-dash.png")  ;; use custom image as banner
   (setq dashboard-center-content t) ;; set to 't' for centered content
   (setq dashboard-items '((recents . 5)
-                          (bookmarks . 3)
-                          (projects . 3)
-                          (registers . 3)))
+                          (bookmarks . 3)))
   :config
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text")
@@ -895,38 +883,6 @@ The Perspective package provides multiple named workspaces (or "perspectives") i
   (persp-mode))
 #+end_src
 
-* Registers
-Emacs registers are compartments where you can save text, rectangles and positions for later use. Once you save text or a rectangle in a register, you can copy it into the buffer once or many times; once you save a position in a register, you can jump back to that position once or many times.  The default GNU Emacs keybindings for these commands (with the exception of counsel-register) involves 'C-x r' followed by one or more other keys.  I wanted to make this a little more user friendly, so I chose to replace the 'C-x r' part of the key chords with 'SPC r'.
-
-| COMMAND                          | DESCRIPTION                      | KEYBINDING |
-|----------------------------------+----------------------------------+------------|
-| copy-to-register                 | /Copy to register/                 | SPC r c    |
-| frameset-to-register             | /Frameset to register/             | SPC r f    |
-| insert-register                  | /Insert contents of register/      | SPC r i    |
-| jump-to-register                 | /Jump to register/                 | SPC r j    |
-| list-registers                   | /List registers/                   | SPC r l    |
-| number-to-register               | /Number to register/               | SPC r n    |
-| counsel-register                 | /Interactively choose a register/  | SPC r r    |
-| view-register                    | /View a register/                  | SPC r v    |
-| window-configuration-to-register | /Window configuration to register/ | SPC r w    |
-| increment-register               | /Increment register/               | SPC r +    |
-| point-to-register                | /Point to register/                | SPC r SPC  |
-
-#+begin_src emacs-lisp
-(nvmap :prefix "SPC"
-       "r c"   '(copy-to-register :which-key "Copy to register")
-       "r f"   '(frameset-to-register :which-key "Frameset to register")
-       "r i"   '(insert-register :which-key "Insert register")
-       "r j"   '(jump-to-register :which-key "Jump to register")
-       "r l"   '(list-registers :which-key "List registers")
-       "r n"   '(number-to-register :which-key "Number to register")
-       "r r"   '(counsel-register :which-key "Choose a register")
-       "r v"   '(view-register :which-key "View a register")
-       "r w"   '(window-configuration-to-register :which-key "Window configuration to register")
-       "r +"   '(increment-register :which-key "Increment register")
-       "r SPC" '(point-to-register :which-key "Point to register"))
-#+end_src
-
 * Scrolling
 Emacs' default scrolling is annoying because of the sudden half-page jumps.  Also, I wanted to adjust the scrolling speed.
 
@@ -939,7 +895,6 @@ Emacs' default scrolling is annoying because of the sudden half-page jumps.  Als
 
 * Shells
 In my configs, all of my shells (bash, fish, zsh and the ESHELL) require my shell-color-scripts-git package to be installed.  On Arch Linux, you can install it from the AUR.  Otherwise, go to my shell-color-scripts repository on GitLab to get it.
-
 ** Eshell
 Eshell is an Emacs 'shell' that is written in Elisp.
 
@@ -967,15 +922,6 @@ Eshell is an Emacs 'shell' that is written in Elisp.
       eshell-scroll-to-bottom-on-input t
       eshell-destroy-buffer-when-process-dies t
       eshell-visual-commands'("bash" "htop" "zsh"))
-#+end_src
-
-** Vterm
-Vterm is a terminal emulator within Emacs.  The 'shell-file-name' setting sets the shell to be used in M-x shell, M-x term, M-x ansi-term and M-x vterm.  By default, the shell is set to 'fish' but could change it to 'bash' or 'zsh' if you prefer.
-
-#+begin_src emacs-lisp
-(use-package vterm)
-(setq shell-file-name "/bin/zsh"
-      vterm-max-scrollback 5000)
 #+end_src
 
 * Splits and windows
@@ -1030,9 +976,3 @@ Dial the GC threshold back down so that garbage collection happens more frequent
 (setq gc-cons-threshold (* 2 1000 1000))
 #+end_src
 
-* Writeroom
-A minor mode for Emacs that implements a distraction-free writing mode similar to the famous Writeroom editor for OS X.
-
-#+begin_src emacs-lisp
-(use-package writeroom-mode)
-#+end_src

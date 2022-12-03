@@ -5,9 +5,9 @@
 #  - Dependencies: rofi, NetworkManager
 
 ## ROFI VARIABLES ##
-ROFI1="rofi -dmenu -l 10 -b -i -p"
-ROFI2="rofi -dmenu -l 1 -b -p"
-ROFI3="rofi -dmenu -l 6 -b -i -p"
+ROFI1="rofi -dmenu -l 10 -i -p"
+ROFI2="rofi -dmenu -l 1 -p"
+ROFI3="rofi -dmenu -l 6 -i -p"
 
 ## MAIN OPTIONS ##
 option1="  Turn on WiFi"

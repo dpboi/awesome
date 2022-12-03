@@ -302,7 +302,7 @@ original_args=("$@")
 # rofi command to pipe into. Extra arguments to rofi_blue are passed through to rofi. This
 # allows the user to set fonts, sizes, colours, etc.
 run_rofi() {
-    rofi -dmenu "${original_args[@]}" -b -l 5 -i -p "$1"
+    rofi -dmenu "${original_args[@]}" -l 5 -i -p "$1"
 }
 
 case "$1" in
