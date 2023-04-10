@@ -12,8 +12,11 @@ This system was installed on [void linux](https://voidlinux.org/)
 - sx(start xorg session)
 - iwd (wifi)
 - brillo (brightness)
-- Pipewire (as pulse instance or just pulseaudo)
+- mpc
+- pamixer
+- pipewire (as pulse instance or just pulseaudo)
 - rofi
+- unclutter-xfixes
 - zsh
 - picom
 
