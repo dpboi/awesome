@@ -1,0 +1,29 @@
+for command in loginctl mount umount poweroff reboot sh ; do
+alias $command="doas $command"
+done; unset command
+
+### ALIASES ###
+# cd
+alias \
+  ..="cd .." \
+  .2="cd ../.." \
+  .3="cd ../../.." \
+
+# void
+alias \
+  xb-up="doas vpm --color=yes update -Su" \
+  xb-get="doas vpm --color=yes install" \
+  xb-rmv="doas vpm --color=yes remove -R" \
+  xb-rmv-sec="doas --color=yes vpm remove" \
+  xb-qry="doas vpm --color=yes search" \
+  xb-cln="doas vpm --color=yes cleanup -o"
+
+# improved commands
+alias ls='lsd --all --long'
+alias cat='bat --pager=never'
+alias ip='ip -color=auto'
+alias lf='lfrun'
+
+# Use neovim as manpage pager.
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999

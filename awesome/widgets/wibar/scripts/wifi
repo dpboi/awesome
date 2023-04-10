@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#!/bin/bash
+AP=$(iw dev wlp2s0 link | awk -F: '/SSID/ {print $NF}')
+echo $AP

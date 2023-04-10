@@ -1,0 +1,8 @@
+killall -9 mpd pipewire dunst picom unclutter
+brillo -S 55
+xset r rate 200 60 &
+mpd &
+unclutter --hide-on-touch &
+picom &
+pipewire &
+pipewire-pulse &

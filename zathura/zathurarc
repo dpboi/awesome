@@ -1,0 +1,47 @@
+set font                        "JetBrainsMono Nerd Font 10"
+set default-bg                  "#1d2021" #00
+set default-fg                  "#d5c4a1" #01
+
+set statusbar-fg                "#d5c4a1" #04
+set statusbar-bg                "#1d2021" #01
+
+set inputbar-bg                 "#1d2021" #00 currently not used
+set inputbar-fg                 "#d5c4a1" #02
+
+set notification-error-bg       "#1d2021" #08
+set notification-error-fg       "#fb4934" #00
+
+set notification-warning-bg     "#1d2021" #08
+set notification-warning-fg     "#d79921" #00
+
+set highlight-color             "#1d2021" #0A
+set highlight-active-color      "#d5c4a1" #0D
+
+set completion-highlight-fg     "#4e4e4e" #02
+set completion-highlight-bg     "#87afaf" #0C
+
+set completion-bg               "#4e4e4e" #02
+set completion-fg               "#d5c4a1" #0C
+
+set notification-bg             "#1d2021" #0B
+set notification-fg             "#83a598" #00
+
+set recolor-lightcolor          "#1d2021" #00
+set recolor-darkcolor           "#d5c4a1" #06
+set recolor                     "true"
+
+# setting recolor-keep true will keep any color your pdf has.
+# if it is false, it'll just be black and white
+set recolor-keephue "true"
+
+set selection-clipboard "clipboard"
+
+# keybindings
+map [fullscreen] a adjust_window best-fit
+map [fullscreen] s adjust_window width
+map [fullscreen] f follow
+map [fullscreen] <Tab> toggle_index
+map [fullscreen] j scroll down
+map [fullscreen] k scroll up
+map [fullscreen] h navigate previous
+map [fullscreen] l navigate next
